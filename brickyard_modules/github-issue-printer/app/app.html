@@ -1,0 +1,25 @@
+<form class="container">
+	<md-form-field>
+		<input mdInput name="username" placeholder="Github ID" [(ngModel)]="username">
+	</md-form-field>
+	<md-form-field>
+		<input mdInput type="password" name="password" placeholder="Github Password" [(ngModel)]="password">
+	</md-form-field>
+	<button type="button" md-raised-button (click)="login()" [disabled]="!username || !password">Login</button>
+	<div *ngIf="!!repos">
+		<div class="mat-form-field">
+			<md-select placeholder="repos" [(ngModel)]="selectedRepo" name="selectedRepo" [style.width]="'100%'">
+				<md-option *ngFor="let repo of repos" [value]="repo">{{repo.full_name}}</md-option>
+			</md-select>
+		</div>
+		<span *ngIf="!!selectedRepo">
+			<md-form-field>
+				<input mdInput type="text" name="issues" placeholder="Issue Numbers" [(ngModel)]="issueNumbers">
+			</md-form-field>
+			<button type="button" md-raised-button (click)="loadIssues()" [disabled]="!issueNumbers">load issues</button>
+		</span>
+	</div>
+	<div *ngIf="!!issues">
+		<div *ngFor="let issue of issues">#{{issue.number}} {{issue.title}}</div>
+	</div>
+</form>
