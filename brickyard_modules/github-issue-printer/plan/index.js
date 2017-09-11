@@ -1,7 +1,7 @@
 module.exports = {
 	includes: ['angular'],
 	modules: [
-		'github-issue-list',
+		'github-issue-printer',
 	],
 	config: {
 
